@@ -14,8 +14,26 @@ export const stockRouter = new Hono();
 stockRouter.get('/', getAllColorsStock);
 
 //agregar un nuevo color
-stockRouter.post('/', zValidator('json', stockSchema), createNewColorStock);
+stockRouter.post('/', zValidator('json', stockSchema), async (c) => {
+	const { name, quantity = 0 } = c.req.valid('json');
 
+	// Verificar si ya existe ese color
+	const existingProduct = await db
+		.select()
+		.from(stockTable)
+		.where(sql`LOWER(${stockTable.name}) = ${name.toLowerCase()}`)
+		.get();
+
+	if (existingProduct) {
+		return c.json({ error: 'Product with this name already exists' }, 400);
+	}
+
+	await db.insert(stockTable).values({ name: name.toLowerCase(), quantity });
+
+	return c.json({ message: 'Product created successfully' }, 201);
+});
+
+//actualizar un color
 stockRouter.put('/:name', zValidator('json', stockSchema), async (c) => {
 	const { name: newName, quantity } = c.req.valid('json');
 	const currentName = c.req.param('name').toLowerCase();
