@@ -22,7 +22,7 @@ export const handle = (app) => {
     const contentType = res.headers.get('content-type');
     
     let resBody;
-    if (contentType?.includes('application/json')) {
+    if (contentType && contentType.includes('application/json')) {
       resBody = await res.json();
     } else {
       resBody = await streamToString(res.body);
