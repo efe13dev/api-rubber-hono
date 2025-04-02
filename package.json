@@ -1,11 +1,11 @@
 {
 	"name": "api-rubber-hono",
-	"type": "module",
 	"scripts": {
 		"dev": "bun run --hot src/index.ts",
-		"build": "bun build src/index.ts --outdir dist --target node"
+		"build": "bun build src/index.ts --outdir dist --target node --format cjs"
 	},
 	"dependencies": {
+		"@hono/node-server": "^1.14.0",
 		"@hono/zod-validator": "^0.4.3",
 		"@libsql/client": "^0.15.1",
 		"dotenv": "^16.4.7",

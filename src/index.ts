@@ -7,4 +7,4 @@ const app = new Hono();
 app.route('/stock', stockRouter);
 app.route('/formulas', formulasRouter);
 
-export default app;
+module.exports = app;
