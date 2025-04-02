@@ -1,14 +1,10 @@
 [build]
   command = "bun install && bun run build"
   publish = "dist"
-  functions = "netlify/functions"
 
-[functions]
-  node_bundler = "esbuild"
-  node_version = "18"
-  external_node_modules = ["hono"]
+[build.environment]
+  NODE_VERSION = "18"
 
-[[redirects]]
-  from = "/*"
-  to = "/.netlify/functions/server"
-  status = 200
+[[edge_functions]]
+  path = "/*"
+  function = "api"
