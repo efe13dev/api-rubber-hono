@@ -1,5 +1,5 @@
-const { Hono } = require('hono');
-const { handle } = require('../adapters/netlify');
-const app = require('../../dist/index.js');
+import { Hono } from 'hono';
+import { handle } from '../adapters/netlify.js';
+import app from '../../dist/index.js';
 
-exports.handler = handle(app);
+export const handler = handle(app);

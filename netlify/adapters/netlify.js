@@ -1,6 +1,6 @@
-const { streamToString } = require('hono/utils/stream');
+import { streamToString } from 'hono/utils/stream';
 
-exports.handle = (app) => {
+export const handle = (app) => {
   return async (event, context) => {
     const url = new URL(event.rawUrl);
     const method = event.httpMethod;
