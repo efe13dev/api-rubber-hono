@@ -2,7 +2,7 @@
   "name": "api-rubber-hono",
   "scripts": {
     "dev": "bun run --hot src/index.ts",
-    "build": "bun build src/index.ts --outdir dist"
+    "build": "bun build src/index.ts --outdir dist --target node --format cjs"
   },
   "dependencies": {
     "@hono/zod-validator": "^0.4.3",

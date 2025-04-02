@@ -1,6 +1,6 @@
-import { streamToString } from 'hono/utils/stream';
+const { streamToString } = require('hono/utils/stream');
 
-export const handle = (app) => {
+exports.handle = (app) => {
   return async (event, context) => {
     const url = new URL(event.rawUrl);
     const method = event.httpMethod;
@@ -22,7 +22,7 @@ export const handle = (app) => {
     const contentType = res.headers.get('content-type');
     
     let resBody;
-    if (contentType && contentType.includes('application/json')) {
+    if (contentType?.includes('application/json')) {
       resBody = await res.json();
     } else {
       resBody = await streamToString(res.body);

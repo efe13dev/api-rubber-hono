@@ -8,3 +8,7 @@ app.route('/stock', stockRouter);
 app.route('/formulas', formulasRouter);
 
 export default app;
+// Para compatibilidad con CommonJS
+if (typeof module !== 'undefined') {
+  module.exports = app;
+}
