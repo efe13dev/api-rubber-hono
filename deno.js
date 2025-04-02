@@ -1,5 +1,5 @@
 import { serve } from "https://deno.land/std@0.204.0/http/server.ts";
-import { Hono } from "https://deno.land/x/hono@v4.7.5/mod.ts";
+import { Hono } from "https://deno.land/x/hono@v3.10.0/mod.ts";
 import { stockRouter } from "./src/routes/stock.routes.ts";
 import { formulasRouter } from "./src/routes/formulas.routes.ts";
 
