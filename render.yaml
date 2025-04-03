@@ -2,8 +2,8 @@ services:
   - type: web
     name: api-rubber-hono
     runtime: bun
-    buildCommand: bun install && bun run build
-    startCommand: bun run start
+    buildCommand: bun install && bun build src/server.ts --outdir dist
+    startCommand: bun dist/server.js
     envVars:
       - key: TURSO_DATABASE_URL
         sync: false
