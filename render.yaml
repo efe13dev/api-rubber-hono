@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: api-rubber-hono
+    runtime: bun
+    buildCommand: bun install && bun run build
+    startCommand: bun run dist/index.js
+    envVars:
+      - key: DATABASE_URL
+        sync: false

@@ -5,6 +5,33 @@ Esta API proporciona endpoints para gestionar el inventario de colores.
 ## Base URL
 `/stock`
 
+## Despliegue en Render
+
+Para desplegar esta API en Render, sigue estos pasos:
+
+1. Crea una cuenta en [Render](https://render.com/) si aún no tienes una.
+
+2. Conecta tu repositorio de GitHub a Render:
+   - Ve a tu dashboard de Render
+   - Haz clic en "New" y selecciona "Web Service"
+   - Conecta tu cuenta de GitHub y selecciona el repositorio
+
+3. Configura el servicio:
+   - **Nombre**: Elige un nombre para tu servicio
+   - **Runtime**: Bun
+   - **Build Command**: `bun install && bun run build`
+   - **Start Command**: `bun run start`
+
+4. Configura las variables de entorno:
+   - Añade `DATABASE_URL` con la URL de tu base de datos Turso
+
+5. Haz clic en "Create Web Service"
+
+## Variables de entorno requeridas
+
+- `DATABASE_URL`: URL de conexión a tu base de datos Turso
+- `PORT`: Puerto en el que se ejecutará la aplicación (Render lo configura automáticamente)
+
 ## Endpoints
 
 ### Obtener todo el stock
