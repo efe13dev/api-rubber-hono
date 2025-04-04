@@ -32,7 +32,7 @@ Para desplegar esta API en Render, sigue estos pasos:
 - `DATABASE_URL`: URL de conexión a tu base de datos Turso
 - `PORT`: Puerto en el que se ejecutará la aplicación (Render lo configura automáticamente)
 
-## Endpoints
+## Endpoints de Stock
 
 ### Obtener todo el stock
 - **Método:** GET
@@ -82,6 +82,80 @@ Para desplegar esta API en Render, sigue estos pasos:
 - **Respuesta:**
   - Éxito: Confirmación de eliminación
   - Error (404): Si el color no existe
+
+## Endpoints de Fórmulas
+
+Base URL: `/formulas`
+
+### Obtener todas las fórmulas
+- **Método:** GET
+- **Ruta:** `/`
+- **Descripción:** Retorna la lista completa de fórmulas
+- **Respuesta:** Lista de fórmulas con sus ingredientes
+
+### Obtener una fórmula específica
+- **Método:** GET
+- **Ruta:** `/:name`
+- **Parámetros:** 
+  - name: Nombre de la fórmula a consultar
+- **Descripción:** Retorna los detalles de una fórmula específica
+- **Respuesta:**
+  - Éxito: Datos de la fórmula con sus ingredientes
+  - Error (404): Si la fórmula no existe
+
+### Agregar una nueva fórmula
+- **Método:** POST
+- **Ruta:** `/`
+- **Body:**
+  ```json
+  {
+    "name": "string",
+    "ingredients": [
+      {
+        "name": "string",
+        "quantity": number
+      }
+    ]
+  }
+  ```
+- **Descripción:** Agrega una nueva fórmula al sistema
+- **Validación:** No permite duplicados (nombre case-insensitive)
+- **Respuesta:** 
+  - Éxito (201): Mensaje de confirmación y datos de la fórmula creada
+  - Error (400): Si la fórmula ya existe
+
+### Actualizar una fórmula
+- **Método:** PUT
+- **Ruta:** `/:name`
+- **Parámetros:** 
+  - name: Nombre de la fórmula a actualizar
+- **Body:**
+  ```json
+  {
+    "name": "string",
+    "ingredients": [
+      {
+        "name": "string",
+        "quantity": number
+      }
+    ]
+  }
+  ```
+- **Descripción:** Actualiza la información de una fórmula existente
+- **Respuesta:**
+  - Éxito: Mensaje de confirmación y datos actualizados
+  - Error (404): Si la fórmula no existe
+  - Error (400): Si el nuevo nombre ya existe
+
+### Eliminar una fórmula
+- **Método:** DELETE
+- **Ruta:** `/:name`
+- **Parámetros:**
+  - name: Nombre de la fórmula a eliminar
+- **Descripción:** Elimina una fórmula del sistema
+- **Respuesta:**
+  - Éxito: Confirmación de eliminación
+  - Error (404): Si la fórmula no existe
 
 ## Tecnologías Utilizadas
 - Hono (Framework)
