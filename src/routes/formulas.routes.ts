@@ -4,6 +4,7 @@ import { Hono } from "hono";
 
 import { deleteFormula } from "../controllers/deleteFormula";
 import { getAllFormulas } from "../controllers/getAllFormulas";
+import { getAllFormulasNames } from "../controllers/getAllFormulasNames";
 import { getOneFormula } from "../controllers/getOneFormula";
 import { db } from "../db";
 import { formulaIngredientTable, formulaTable } from "../db/schema";
@@ -13,6 +14,9 @@ export const formulasRouter = new Hono();
 
 //obtener todas las formulas
 formulasRouter.get("/", getAllFormulas);
+
+//obtener solo los nombres de todas las formulas (sin ingredientes)
+formulasRouter.get("/names", getAllFormulasNames);
 
 //obtener una formula
 formulasRouter.get("/:name", getOneFormula);
