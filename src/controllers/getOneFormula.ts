@@ -1,6 +1,6 @@
 import type { Context } from "hono";
 
-import { eq } from "drizzle-orm";
+import { eq, asc } from "drizzle-orm";
 
 import { db } from "../db";
 import { formulaIngredientTable, formulaTable } from "../db/schema";
@@ -36,6 +36,7 @@ export async function getOneFormula(c: Context) {
       .from(formulaTable)
       .leftJoin(formulaIngredientTable, eq(formulaTable.id, formulaIngredientTable.formulaId))
       .where(eq(formulaTable.name, name))
+      .orderBy(asc(formulaIngredientTable.id))
       .all();
 
     // Verificar si la fórmula existe
