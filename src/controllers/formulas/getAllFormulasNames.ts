@@ -1,7 +1,7 @@
 import type { Context } from "hono";
 
-import { db } from "../db";
-import { formulaTable } from "../db/schema";
+import { db } from "../../db";
+import { formulaTable } from "../../db/schema";
 
 /**
  * Obtiene todos los nombres de las fórmulas (sin ingredientes) de forma optimizada

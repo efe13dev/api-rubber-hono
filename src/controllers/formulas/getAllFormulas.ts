@@ -2,8 +2,8 @@ import type { Context } from "hono";
 
 import { sql } from "drizzle-orm";
 
-import { db } from "../db";
-import { formulaIngredientTable, formulaTable } from "../db/schema";
+import { db } from "../../db";
+import { formulaIngredientTable, formulaTable } from "../../db/schema";
 
 export async function getAllFormulas(c: Context) {
   // Obtener todas las fórmulas

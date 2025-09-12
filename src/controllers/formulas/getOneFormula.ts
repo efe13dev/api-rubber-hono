@@ -1,9 +1,9 @@
 import type { Context } from "hono";
 
-import { eq, asc } from "drizzle-orm";
+import { asc, eq } from "drizzle-orm";
 
-import { db } from "../db";
-import { formulaIngredientTable, formulaTable } from "../db/schema";
+import { db } from "../../db";
+import { formulaIngredientTable, formulaTable } from "../../db/schema";
 
 /**
  * Obtiene una fórmula específica con todos sus ingredientes usando una query optimizada

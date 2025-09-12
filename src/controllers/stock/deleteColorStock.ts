@@ -2,8 +2,8 @@ import type { Context } from "hono";
 
 import { sql } from "drizzle-orm";
 
-import { db } from "../db";
-import { stockTable } from "../db/schema";
+import { db } from "../../db";
+import { stockTable } from "../../db/schema";
 
 export async function deleteColorStock(c: Context) {
   const name = c.req.param("name").toLowerCase();
